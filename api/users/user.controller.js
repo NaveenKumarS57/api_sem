@@ -87,7 +87,7 @@ module.exports = {
         });
     },
     deleteUser: (req,res)=>{
-        const id = req.body;
+        const data = req.body;
         deleteUser(data, (err, results)=>{
             if(err){
                 console.log(err);
@@ -95,7 +95,7 @@ module.exports = {
             }
             if(!results){
                 return res.json({
-                    success: 1,
+                    success: 0,
                     message: "there is no record"
                 });
             }
@@ -130,6 +130,7 @@ module.exports = {
                 return res.json({
                     success: 1,
                     message: "login successful",
+                    data: body.name,
                     token: jsontoken
                 });
             }

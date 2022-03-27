@@ -71,13 +71,16 @@ module.exports = {
                 if(error){
                     return callBack(error);
                 }
-                return callBack(null,results[0]);
+                // if(results.affectedRows)
+                // return callBack(null,data.id);
+                return callBack(null,results.affectedRows);
+                // return callBack(null,0);
             }
         );
     },
     getUserByUserMail: (mail, callBack)=>{
         pool.query(
-            `select password, mailid from login where mailid = ?`,
+            `select * from login where mailid = ?`,
             [mail],
             (error, results, fields)=>{
                 if(error){
