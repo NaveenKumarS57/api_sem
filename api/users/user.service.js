@@ -45,13 +45,12 @@ module.exports = {
     },
     updateUser: (data, callBack)=>{
         pool.query(
-            `update login set mailid=?,password=?,name=?,empid=? where id = ?`,
+            `update login set password=?,name=?,empid=? where mailid = ?`,
             [
-                data.mailid,
                 data.password,
                 data.name,
                 data.empid,
-                data.id
+                data.mailid
             ],
             (error,results,fields)=>{
                 if(error){
